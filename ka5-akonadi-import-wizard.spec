@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		akonadi-import-wizard
 Summary:	Akonadi import wizard
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f2eb4f187b7c0a4f49bc4721b82c6e97
+# Source0-md5:	c1ed4182208772d601b83b76c861d2bb
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel
@@ -95,8 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadiimportwizard
-%ghost %{_libdir}/libKPimImportWizard.so.5
-%attr(755,root,root) %{_libdir}/libKPimImportWizard.so.*.*.*
 %{_desktopdir}/org.kde.akonadiimportwizard.desktop
 %{_iconsdir}/hicolor/128x128/apps/kontact-import-wizard.png
 %{_iconsdir}/hicolor/256x256/apps/kontact-import-wizard.png
@@ -105,18 +103,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories5/importwizard.categories
 %{_datadir}/qlogging-categories5/importwizard.renamecategories
 %dir %{_libdir}/qt5/plugins/pim5/importwizard
-%{_libdir}/qt5/plugins/pim5/importwizard/balsaimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/clawsmailimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/evolutionv3importerplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/icedoveimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/seamonkeyimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/sylpheedimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/thunderbirdimporterplugin.so
-%{_libdir}/qt5/plugins/pim5/importwizard/trojitaimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/balsaimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/clawsmailimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/evolutionv3importerplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/icedoveimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/seamonkeyimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/sylpheedimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/thunderbirdimporterplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/importwizard/trojitaimporterplugin.so
+%ghost %{_libdir}/libKPim5ImportWizard.so.5
+%attr(755,root,root) %{_libdir}/libKPim5ImportWizard.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/KPim
-%{_includedir}/KPim
+%{_includedir}/KPim5/ImportWizard
+%{_includedir}/KPim5/importwizard
+%{_includedir}/KPim5/importwizard_version.h
+%{_libdir}/cmake/KPim5ImportWizard
 %{_libdir}/cmake/KPimImportWizard
-%{_libdir}/libKPimImportWizard.so
+%{_libdir}/libKPim5ImportWizard.so
